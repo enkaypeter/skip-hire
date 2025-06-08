@@ -86,65 +86,16 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            <div className="flex items-center gap-3">
-              <div className="bg-blue-600 p-2 rounded-lg">
-                <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-lg sm:text-xl font-bold text-gray-900">We Want Waste</h1>
-                <p className="text-xs sm:text-sm text-gray-600 hidden sm:block">Professional Skip Hire Services</p>
-              </div>
-            </div>
-            
-            {/* Desktop Contact Info */}
-            <div className="hidden lg:flex items-center gap-6 text-sm text-gray-600">
-              <span className="flex items-center gap-2">
-                <span>📞</span>
-                <span>0800 123 4567</span>
-              </span>
-              <span className="flex items-center gap-2">
-                <span>📧</span>
-                <span>hello@wewantwaste.co.uk</span>
-              </span>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-gray-600" />
-              ) : (
-                <Menu className="w-6 h-6 text-gray-600" />
-              )}
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="lg:hidden border-t border-gray-200 py-4 space-y-3">
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <span>📞</span>
-                <span>0800 123 4567</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <span>📧</span>
-                <span>hello@wewantwaste.co.uk</span>
-              </div>
-            </div>
-          )}
-        </div>
-      </header>
+      {/* <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50"> */}
+  
 
       {/* Main Content */}
+    
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
         <ProgressIndicator steps={steps} />
 
         <div className="text-center mb-8 sm:mb-12">
+          {/* <h2 className="text-3xl sm:text-3xl lg:text-4xl font-bold text-sky-700 mb-3 sm:mb-4"> */}
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             Choose Your Skip Size
           </h2>
@@ -193,49 +144,6 @@ function App() {
             <span className="sm:hidden">Continue</span>
             <ArrowRight className="w-4 h-4" />
           </Button>
-        </div>
-
-        {/* Info Section - Responsive Grid */}
-        <div className="mt-12 sm:mt-16 bg-white/60 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gray-200">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
-            <div className="text-center">
-              <div className="bg-blue-100 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                <Truck className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" />
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Free Delivery</h3>
-              <p className="text-gray-600 text-xs sm:text-sm">
-                We deliver your skip at a time that suits you, completely free of charge.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-green-100 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                <span className="text-xl sm:text-2xl">🌍</span>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Eco-Friendly</h3>
-              <p className="text-gray-600 text-xs sm:text-sm">
-                We recycle up to 95% of all waste collected, protecting our environment.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-purple-100 w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                <span className="text-xl sm:text-2xl">⭐</span>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">5-Star Service</h3>
-              <p className="text-gray-600 text-xs sm:text-sm">
-                Rated excellent by over 10,000 customers across the UK.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Disclaimer */}
-        <div className="mt-6 sm:mt-8 text-center px-4">
-          <p className="text-xs text-gray-500 max-w-4xl mx-auto leading-relaxed">
-            Imagery and information shown throughout this website may not reflect the exact shape or size specification, 
-            colours may vary, options and/or accessories may be featured at additional cost.
-          </p>
         </div>
       </main>
     </div>
