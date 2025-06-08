@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ProgressIndicator } from './components/ProgressIndicator';
 import { SkipCard } from './components/SkipCard';
 import { Button } from './components/ui/button';
@@ -18,6 +18,45 @@ interface Skip {
 function App() {
   const [selectedSkip, setSelectedSkip] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [skips, setSkips] = useState<Skip[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchSkips = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const response = await fetch('https://app.wewantwaste.co.uk/api/skips/by-location?postcode=NR32&area=Lowestoft');
+        if (!response.ok) {
+          throw new Error(response.statusText || 'Failed to fetch skips');
+        }
+        const apiData = await response.json();
+        const transformedSkips = apiData.map((apiSkip: any) => {
+          const price_before_vat = parseFloat(apiSkip.price_before_vat);
+          const vat = parseFloat(apiSkip.vat);
+          const totalPrice = price_before_vat * (1 + vat / 100);
+          return {
+            id: String(apiSkip.id),
+            size: `${apiSkip.size} Yard Skip`,
+            capacity: `${apiSkip.size} Yards`,
+            price: `£${totalPrice.toFixed(0)}`,
+            period: `${apiSkip.hire_period_days} day hire period`,
+            image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
+            isRestricted: !apiSkip.allowed_on_road,
+            restrictionText: !apiSkip.allowed_on_road ? "Not Allowed On The Road" : undefined,
+          };
+        });
+        setSkips(transformedSkips);
+      } catch (err: any) {
+        setError(err.message || "Failed to fetch skips");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchSkips();
+  }, []);
 
   const steps = [
     { id: 'postcode', title: 'Postcode', completed: true, current: false },
@@ -28,65 +67,65 @@ function App() {
     { id: 'payment', title: 'Payment', completed: false, current: false },
   ];
 
-  const skips: Skip[] = [
-    {
-      id: '4-yard',
-      size: '4 Yard Skip',
-      capacity: '4 Yards',
-      price: '£211',
-      period: '14 day hire period',
-      image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
-    },
-    {
-      id: '5-yard',
-      size: '5 Yard Skip',
-      capacity: '5 Yards',
-      price: '£241',
-      period: '14 day hire period',
-      image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
-    },
-    {
-      id: '6-yard',
-      size: '6 Yard Skip',
-      capacity: '6 Yards',
-      price: '£264',
-      period: '14 day hire period',
-      image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
-    },
-    {
-      id: '8-yard',
-      size: '8 Yard Skip',
-      capacity: '8 Yards',
-      price: '£299',
-      period: '14 day hire period',
-      image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
-    },
-    {
-      id: '10-yard',
-      size: '10 Yard Skip',
-      capacity: '10 Yards',
-      price: '£366',
-      period: '14 day hire period',
-      image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
-      isRestricted: true,
-      restrictionText: 'Not Allowed On The Road',
-    },
-    {
-      id: '12-yard',
-      size: '12 Yard Skip',
-      capacity: '12 Yards',
-      price: '£399',
-      period: '14 day hire period',
-      image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
-      isRestricted: true,
-      restrictionText: 'Not Allowed On The Road',
-    },
-  ];
+  // const skips: Skip[] = [
+  //   {
+  //     id: '4-yard',
+  //     size: '4 Yard Skip',
+  //     capacity: '4 Yards',
+  //     price: '£211',
+  //     period: '14 day hire period',
+  //     image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
+  //   },
+  //   {
+  //     id: '5-yard',
+  //     size: '5 Yard Skip',
+  //     capacity: '5 Yards',
+  //     price: '£241',
+  //     period: '14 day hire period',
+  //     image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
+  //   },
+  //   {
+  //     id: '6-yard',
+  //     size: '6 Yard Skip',
+  //     capacity: '6 Yards',
+  //     price: '£264',
+  //     period: '14 day hire period',
+  //     image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
+  //   },
+  //   {
+  //     id: '8-yard',
+  //     size: '8 Yard Skip',
+  //     capacity: '8 Yards',
+  //     price: '£299',
+  //     period: '14 day hire period',
+  //     image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
+  //   },
+  //   {
+  //     id: '10-yard',
+  //     size: '10 Yard Skip',
+  //     capacity: '10 Yards',
+  //     price: '£366',
+  //     period: '14 day hire period',
+  //     image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
+  //     isRestricted: true,
+  //     restrictionText: 'Not Allowed On The Road',
+  //   },
+  //   {
+  //     id: '12-yard',
+  //     size: '12 Yard Skip',
+  //     capacity: '12 Yards',
+  //     price: '£399',
+  //     period: '14 day hire period',
+  //     image: 'https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400',
+  //     isRestricted: true,
+  //     restrictionText: 'Not Allowed On The Road',
+  //   },
+  // ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+      <header className="bg-sky-100/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             <div className="flex items-center gap-3">
@@ -145,7 +184,7 @@ function App() {
         <ProgressIndicator steps={steps} />
 
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+          <h2 className="text-3xl sm:text-3xl lg:text-4xl font-bold text-sky-700 mb-3 sm:mb-4">
             Choose Your Skip Size
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
@@ -155,9 +194,12 @@ function App() {
         </div>
 
         {/* Skip Grid - Responsive Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
-          {skips.map((skip) => (
-            <SkipCard
+        {isLoading && <div className="text-center p-10">Loading skips...</div>}
+        {error && <div className="text-center p-10 text-red-600">Error: {error}</div>}
+        {!isLoading && !error && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
+            {skips.map((skip) => (
+              <SkipCard
               key={skip.id}
               size={skip.size}
               capacity={skip.capacity}
@@ -169,8 +211,9 @@ function App() {
               restrictionText={skip.restrictionText}
               onSelect={() => setSelectedSkip(skip.id)}
             />
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* Action Buttons - Mobile Responsive */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 max-w-4xl mx-auto">
