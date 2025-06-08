@@ -84,10 +84,7 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
-      {/* Header */}
-      {/* <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50"> */}
-  
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">  
 
       {/* Main Content */}
     
