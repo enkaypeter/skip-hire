@@ -21,12 +21,13 @@ interface StickyFooterProps {
 
 export function StickyFooter({ selectedSkip, onContinue, onBack, onClose }: StickyFooterProps) {
   if (!selectedSkip) return null;
+  const disclaimerText = "Imagery and information shown throughout this website may not reflect the exact shape or size specification, colours may vary, options and/or accessories may be featured at additional cost.";
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 animate-in slide-in-from-bottom duration-300">
       {/* Backdrop blur */}
       <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" />
-      
+
       {/* Footer content */}
       <div className="relative bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-2xl">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,6 +81,15 @@ export function StickyFooter({ selectedSkip, onContinue, onBack, onClose }: Stic
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
+
+            {/* --- Disclaimer Text Start (Mobile) --- */}
+            <div className="border-t border-gray-200 mt-4 pt-3">
+              <p className="text-center text-xs text-gray-500">
+                {disclaimerText}
+              </p>
+            </div>
+            {/* --- Disclaimer Text End (Mobile) --- */}
+
           </div>
 
           {/* Desktop/Tablet Layout */}
@@ -142,6 +152,15 @@ export function StickyFooter({ selectedSkip, onContinue, onBack, onClose }: Stic
                 </button>
               </div>
             </div>
+
+            {/* --- Disclaimer Text Start (Desktop) --- */}
+            <div className="border-t border-gray-200 mt-4 pt-3">
+              <p className="text-center text-xs text-gray-500">
+                {disclaimerText}
+              </p>
+            </div>
+            {/* --- Disclaimer Text End (Desktop) --- */}
+
           </div>
         </div>
       </div>
