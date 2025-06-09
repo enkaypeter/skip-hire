@@ -1,16 +1,6 @@
 import { ArrowLeft, ArrowRight, X } from 'lucide-react';
 import { Button } from './ui/button';
-
-interface Skip {
-  id: string;
-  size: string;
-  capacity: string;
-  price: string;
-  period: string;
-  image: string;
-  isRestricted?: boolean;
-  restrictionText?: string;
-}
+import { Skip } from '../features/skip-selection/types';
 
 interface StickyFooterProps {
   selectedSkip: Skip | null;
