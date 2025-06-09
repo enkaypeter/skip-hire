@@ -1,4 +1,4 @@
-import { ArrowRight, AlertTriangle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SkipCardProps {
@@ -32,9 +32,8 @@ export function SkipCard({
         isSelected
           ? "border-blue-500 ring-2 sm:ring-4 ring-blue-200"
           : "border-gray-200 hover:border-blue-300",
-        isRestricted && "opacity-75"
       )}
-      onClick={!isRestricted ? onSelect : undefined}
+      onClick={onSelect}
     >
       {/* Header Badge */}
       <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-10">
@@ -54,9 +53,8 @@ export function SkipCard({
 
       {/* Restriction Warning */}
       {isRestricted && restrictionText && (
-        <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-10">
+        <div className="absolute top-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-10">
           <div className="bg-amber-100 border border-amber-300 rounded-lg p-2 flex items-center gap-2">
-            <AlertTriangle className="w-3 h-3 sm:w-4 sm:h-4 text-amber-600 flex-shrink-0" />
             <span className="text-xs text-amber-800 font-medium">
               {restrictionText}
             </span>
@@ -92,9 +90,7 @@ export function SkipCard({
             className={cn(
               "flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 rounded-full font-medium transition-all duration-300 text-xs sm:text-sm",
               "min-h-[36px] sm:min-h-[40px]", // Touch-friendly minimum height
-              !isRestricted
-                ? "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg active:bg-blue-800"
-                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+              "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg active:bg-blue-800"
             )}
             disabled={isRestricted}
           >
