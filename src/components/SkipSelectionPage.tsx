@@ -3,7 +3,7 @@ import { SkipCard } from '../components/SkipCard';
 import { Button } from '../components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { useSkips } from '../hooks/useSkips';
-import { Skip } from './types';
+import { Skip } from '../commons/types';
 
 interface SkipSelectionPageProps {
   onSkipSelect: (skip: Skip | null) => void;

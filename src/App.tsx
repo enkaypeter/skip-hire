@@ -1,18 +1,8 @@
 import { useState } from 'react';
-import { ProgressIndicator } from './components/ProgressIndicator';
-import { StickyFooter } from './components/StickyFooter';
-import { SkipSelectionPage } from './components/SkipSelectionPage';
-
-interface Skip {
-  id: string;
-  size: string;
-  capacity: string;
-  price: string;
-  period: string;
-  image: string;
-  isRestricted?: boolean;
-  restrictionText?: string;
-}
+import { ProgressIndicator } from '@/components/ProgressIndicator';
+import { StickyFooter } from '@/components/StickyFooter';
+import { SkipSelectionPage } from '@/components/SkipSelectionPage';
+import { Skip } from '@/commons/types';
 
 function App() {
   const [selectedSkip, setSelectedSkip] = useState<Skip | null>(null);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Skip } from '../components/types';
+import { Skip } from '@/commons/types';
 
 interface ApiSkip {
   id: number | string;
