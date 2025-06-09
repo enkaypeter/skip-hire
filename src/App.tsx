@@ -4,6 +4,15 @@ import { StickyFooter } from '@/components/StickyFooter';
 import { SkipSelectionPage } from '@/components/SkipSelectionPage';
 import { Skip } from '@/commons/types';
 
+import { 
+  MapPin, 
+  Trash2, 
+  Container,
+  ShieldCheck, 
+  CalendarDays, 
+  CreditCard 
+} from 'lucide-react';
+
 function App() {
   const [selectedSkip, setSelectedSkip] = useState<Skip | null>(null);
 
@@ -21,12 +30,12 @@ function App() {
   };
 
   const steps = [
-    { id: 'postcode', title: 'Postcode', completed: true, current: false },
-    { id: 'wastetype', title: 'Waste Type', completed: true, current: false },
-    { id: 'selectskip', title: 'Select Skip', completed: false, current: true },
-    { id: 'permit', title: 'Permit Check', completed: false, current: false },
-    { id: 'date', title: 'Choose Date', completed: false, current: false },
-    { id: 'payment', title: 'Payment', completed: false, current: false },
+    { id: 'postcode', title: 'Postcode', icon: MapPin, completed: true, current: false },
+    { id: 'wastetype', title: 'Waste Type', icon: Trash2, completed: true, current: false },
+    { id: 'selectskip', title: 'Select Skip', icon: Container, completed: false, current: true },
+    { id: 'permit', title: 'Permit Check', icon: ShieldCheck,  completed: false, current: false },
+    { id: 'date', title: 'Choose Date', icon: CalendarDays, completed: false, current: false },
+    { id: 'payment', title: 'Payment', icon: CreditCard, completed: false, current: false },
   ];
 
 
