@@ -56,11 +56,6 @@ export function StickyFooter({ selectedSkip, onContinue, onBack, onClose }: Stic
                 <p className="text-xs text-gray-600">{selectedSkip.period}</p>
                 <div className="flex items-center gap-2 mt-1">
                   <span className="text-lg font-bold text-blue-600">{selectedSkip.price}</span>
-                  {selectedSkip.isRestricted && (
-                    <span className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">
-                      Restricted
-                    </span>
-                  )}
                 </div>
               </div>
             </div>
@@ -80,7 +75,6 @@ export function StickyFooter({ selectedSkip, onContinue, onBack, onClose }: Stic
                 size="lg"
                 onClick={onContinue}
                 className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700"
-                disabled={selectedSkip.isRestricted}
               >
                 Continue
                 <ArrowRight className="w-4 h-4" />
@@ -136,7 +130,6 @@ export function StickyFooter({ selectedSkip, onContinue, onBack, onClose }: Stic
                   size="lg"
                   onClick={onContinue}
                   className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-8"
-                  disabled={selectedSkip.isRestricted}
                 >
                   Continue to Permit Check
                   <ArrowRight className="w-4 h-4" />
