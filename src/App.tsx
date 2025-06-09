@@ -45,8 +45,8 @@ function App() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 flex items-center justify-center">
+      <main className="container w-full max-w-6xl p-6 sm:p-8 lg:py-12">
         <ProgressIndicator steps={steps} />
 
         <SkipSelectionPage
