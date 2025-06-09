@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowRight, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
