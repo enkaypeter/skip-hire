@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ProgressIndicator } from '@/components/ProgressIndicator';
-import { StickyFooter } from '@/components/StickyFooter';
+import { StickyFooter } from '@/components/Footer';
 import { SkipSelectionPage } from '@/components/SkipSelectionPage';
 import { Skip } from '@/commons/types';
 
