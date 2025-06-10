@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SkipCardProps {
@@ -55,6 +55,7 @@ export function SkipCard({
       {isRestricted && restrictionText && (
         <div className="absolute top-4 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-10">
           <div className="bg-amber-100 border border-amber-300 rounded-lg p-2 flex items-center gap-2">
+            <AlertTriangle className="w-3 h-3 lg:w-4 lg:h-4 text-amber-600 flex-shrink-0" />
             <span className="text-xs text-amber-800 font-medium">
               {restrictionText}
             </span>
