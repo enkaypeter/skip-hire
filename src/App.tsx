@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { ProgressIndicator } from '@/components/ProgressIndicator';
 import { StickyFooter } from '@/components/Footer';
+import usePersistentState from '@/hooks/usePersistentState';
 import { SkipSelectionPage } from '@/components/SkipSelectionPage';
 import { Skip } from '@/commons/types';
 
@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 
 function App() {
-  const [selectedSkip, setSelectedSkip] = useState<Skip | null>(null);
+  const [selectedSkip, setSelectedSkip] = usePersistentState<Skip | null>('selectedSkipData', null);
 
   const handleContinue = () => {
     console.log('Continue to permit check');
