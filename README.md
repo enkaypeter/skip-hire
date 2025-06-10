@@ -35,6 +35,28 @@ yarn dev
 
 This will typically start the application on `http://localhost:5173`
 
+## Re-design Approach
+
+### Overall Philosophy
+Focuses on clean, maintainable code, responsiveness, and UI/UX improvements.
+
+- **User Experience:** Aims to deliver an intuitive frontend.
+- **Maintainable React Code:**
+  - Leverages a component-driven architecture for modularity and reusability.
+  - Utilizes TypeScript for type safety, catching errors early and improving code clarity.
+  - Employs custom hooks to encapsulate and reuse stateful logic, keeping components clean.
+- **Responsive Design & UI/UX:**
+  - Utilizes Tailwind CSS with a customized for a utility-first styling approach.
+  - Ensures visual consistency and adaptability across different devices.
+  - Utilizes Radix-UI component library for catchy visual components
+
+
+### AI Workflow
+- Jules: Used for scaffolding features (e.g., pulling data from API, persisting skip selection state).
+- Bolt: Used for scaffolding UI components.
+
+### Figma Board
+The Figma board ([link](https://www.figma.com/design/LmLZjOlbdMCUTpNptoBjzc/skip-hire-redesign)) shows the old and new designs side-by-side.
 
 ### Production URL
 
