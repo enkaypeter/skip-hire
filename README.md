@@ -46,7 +46,7 @@ Focuses on clean, maintainable code, responsiveness, and UI/UX improvements.
   - Utilizes TypeScript for type safety, catching errors early and improving code clarity.
   - Employs custom hooks to encapsulate and reuse stateful logic, keeping components clean.
 - **Responsive Design & UI/UX:**
-  - Utilizes Tailwind CSS with a customized for a utility-first styling approach.
+  - Utilizes Tailwind CSS for a utility-first styling approach.
   - Ensures visual consistency and adaptability across different devices.
   - Utilizes Radix-UI component library for catchy visual components
 
