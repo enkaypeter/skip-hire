@@ -53,7 +53,7 @@ export function SkipCard({
 
       {/* Restriction Warning */}
       {isRestricted && restrictionText && (
-        <div className="absolute top-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-10">
+        <div className="absolute top-4 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 z-10">
           <div className="bg-amber-100 border border-amber-300 rounded-lg p-2 flex items-center gap-2">
             <span className="text-xs text-amber-800 font-medium">
               {restrictionText}
@@ -94,8 +94,8 @@ export function SkipCard({
             )}
             disabled={isRestricted}
           >
-            <span className="hidden sm:inline">Select This Skip</span>
-            <span className="sm:hidden">Select</span>
+            <span className="hidden sm:inline lg:hidden xl:inline">Select This Skip</span>
+            <span className="sm:hidden lg:inline xl:hidden">Select</span>
             <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>

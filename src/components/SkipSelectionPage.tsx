@@ -45,7 +45,7 @@ export const SkipSelectionPage: React.FC<SkipSelectionPageProps> = (props) => {
       )}
 
       <div className="flex justify-between mt-8">
-        <Button variant="outline" onClick={onBackClick}>
+        <Button variant="outline" className='rounded-full' onClick={onBackClick}>
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Waste Type
         </Button>
       </div>
